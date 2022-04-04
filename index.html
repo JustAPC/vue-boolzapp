@@ -10,18 +10,20 @@
     <title>Boolzap</title>
 </head>
 <body>
-    
+    <div class="sfondo">
+
+    </div>
     <div id="root">
-        <div class="sfondo py-5">
-            <div class="container h-100 bg-white">
-                <div class="row h-100">
+        <div class="py-3">
+            <div class="container bg-white">
+                <div class="row">
                     <div class="col-4 m-0 p-0"> <!-- Colonna sinistra -->
                         
                         <!-- Sezione profilo utente -->
-                        <div class="d-flex justify-content-between align-items-center p-3 border-end">
+                        <div class="d-flex justify-content-between align-items-center p-3 border-end top-bar">
                             <!-- Nome + immagine  -->
                             <div> 
-                                <img src="./asset/img/avatar_io.jpg" alt="immagine profilo" class="rounded-circle me-3 profile-img">
+                                <img :src="`./asset/img/avatar${profilo.img}.jpg` " alt="immagine profilo" class="rounded-circle me-3 profile-img">
                                 <span>{{profilo.name}}</span>
                             </div>
                             <!-- Icone -->
@@ -59,17 +61,70 @@
                         <div>
                             <ul class="list-group list-group-flush">
                                 <li class="d-flex justify-content-between align-items-center list-group-item"
-                                v-for="contact in contacts">
+                                v-for="contact in contacts" @click="activeChat()">
+                                <!-- Immagine profilo -->
                                     <div class="d-flex align-items-center">
                                         <img :src=" `./asset/img/avatar${contact.avatar}.jpg` " alt="immagine utente"
                                         class="rounded-circle profile-img me-3">
+                                        <!-- Nome + ultimo messaggio -->
+                                        <div class="pt-2">
+                                            <span>{{contact.name}}</span>
+                                            <p class="last-sent-message">Ultimo messaggio inviato</p>
+                                        </div>
                                     </div>
-
+                                    <!-- Orario -->
+                                    <div>
+                                        <span>{{contact.messages.date}}</span>
+                                    </div>
                                 </li>
                             </ul>
                         </div>
                     </div>
                     
+                    <div class="container col-8 m-0 p-0 d-flex flex-coloumn flex-wrap justify-content-between"> <!-- Colonna Destra -->
+                        <!-- Barra superiore -->
+                        <div class="d-flex justify-content-between align-items-center p-3 top-bar w-100"> <!-- Img + info -->
+                            <div class="d-flex">
+                                <img src="./asset/img/avatar_1.jpg" alt="" class="rounded-circle me-3 profile-img">
+                                <div class="">
+                                    <p class="m-0 p-0">Michele</p>
+                                    <p class="m-0 p-0 last-connection">Ultimo accesso oggi alle 12:00</p>
+                                </div>
+                            </div>
+                            <!-- Icone dx -->
+                            <div class="profile-icons">
+                                <i class="fa-solid fa-magnifying-glass fs-5"></i>
+                                <i class="fa-solid fa-paperclip fs-5"></i>
+                                <i class="fa-solid fa-ellipsis-vertical fs-5"></i>
+                            </div>
+                        </div>
+
+                        <!-- Chat -->
+                        <div class="chat-bg p-3 flex-grow-1">
+                            <div class="container px-5 mx-auto">
+                                <ul class="list-group list-group-flush d-flex flex-coloumn">
+                                    <li class="list-group-item rounded-3 sent-message mb-3 align-self-end pe-5">
+                                        Hai portato a spasso i cani?
+                                    </li>
+                                    <li class="list-group-item rounded-3 sent-message mb-3 align-self-end pe-5">
+                                        Ricordati di stendere i panni
+                                    </li>
+                                    <li class="list-group-item rounded-3 received-message mb-3 align-self-start pe-5">
+                                        Tutto fatto!
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Input Bar -->
+                        <div class="align-self-end w-100 input-bar">
+                            <div class="d-flex align-items-center py-2 px-4 top-bar">
+                                <i class="fa-solid fa-face-smile fs-4 me-4"></i>
+                                <input type="text" id="chat-textbar" placeholder="Scrivi un messaggio">
+                                <i class="fa-solid fa-microphone fs-4 ms-4"></i>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
             </div>

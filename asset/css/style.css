@@ -10,16 +10,25 @@ body {
 
 .sfondo {
     background-color: #359589;
+    height: 150px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: -1;
 }
 
+.top-bar {
+    background-color: #E9EAED;
+}
 
 .profile-img {
-    width: 40px;
+    width: 50px;
 }
 
 .profile-icons i {
     padding-left: 10px;
     color: #B0B1B3;
+    cursor: pointer;
 }
 
 .bg-info {
@@ -40,4 +49,52 @@ body {
 
 #searchbar-text::placeholder {
     font-size: 0.8em;
+}
+
+.last-sent-message {
+    font-size: 0.8em;
+    color: #C6C2C1;
+}
+
+.active-chat {
+    background-color: #E8EBEE;
+}
+
+.last-connection {
+    color: #828CA2;
+    font-size: 0.8em;
+}
+
+.chat-bg {
+    background-image: url(../img/mine.jpg);
+    background-position: center;
+    background-repeat: repeat;
+}
+
+.text-padding {
+    padding: 3px 9%;
+}
+
+.sent-message {
+    background-color: #D8F8BF;
+}
+
+.received-message {
+    background-color: #FEFFFF;
+}
+
+#chat-textbar {
+    border: 0;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+}
+
+#chat-textbar::placeholder {
+    font-size: 0.8em;
+}
+
+.input-bar i{
+    color: #6C7377;
+    cursor: pointer;
 }

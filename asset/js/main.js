@@ -4,7 +4,7 @@ var app = new Vue(
         data: {
             profilo: {
                 name: 'Sofia',
-                img: 'io'
+                img: '_io'
             },
 
             contacts: [
