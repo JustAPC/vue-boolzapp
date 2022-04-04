@@ -1,0 +1,43 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #D8DBD7;
+}
+
+.sfondo {
+    background-color: #359589;
+}
+
+
+.profile-img {
+    width: 40px;
+}
+
+.profile-icons i {
+    padding-left: 10px;
+    color: #B0B1B3;
+}
+
+.bg-info {
+    background-color: #99DAFD;
+}
+
+#desktop-notif {
+    color: #6A84A7;
+}
+.searchbar-bg {
+    background-color: #F9FAFD;
+}
+.search-button {
+    color: #B7BBBE;
+    background-color: white;
+    border: 0;
+}
+
+#searchbar-text::placeholder {
+    font-size: 0.8em;
+}
