@@ -76,11 +76,23 @@ body {
 }
 
 .sent-message {
+    max-width: 49%;
     background-color: #D8F8BF;
+    position: relative;
 }
 
 .received-message {
+    max-width: 49%;
     background-color: #FEFFFF;
+    position: relative;
+}
+
+.data-text {
+    position: absolute;
+    right: 4px;
+    bottom: 2px;
+    font-size: 0.6em;
+    color: #6C7377;;
 }
 
 #chat-textbar {
