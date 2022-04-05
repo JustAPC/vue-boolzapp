@@ -174,6 +174,7 @@ var app = new Vue(
             
             indexChanged : 0,
             inputText : '',
+            searchbar: ''
             
         },
         created() {
@@ -213,41 +214,18 @@ var app = new Vue(
                  console.log(botReply)
             },
 
-            search: function() {
-                let input = document.getElementById('searchbar').value
-                input=input.toLowerCase();
-                let x = document.getElementsByClassName('contact-name');
-                let y = document.getElementsByClassName("contact-img");
-                let z = document.getElementsByClassName("list-group-item")
-                
-                
-                for (i = 0; i < x.length; i++) { 
-                    if (!x[i].innerHTML.toLowerCase().includes(input)) {
-                        x[i].style.display="none";
-                        y[i].style.display="none";
-                        z[i].style.border = 0;
-                    }
-                }
-            }
-        }
-    }
-    )
-    // chatSelection : function () {
-    //     let container = document.getElementsByClassName("chat-container")
-    //     let content = document.querySelectorAll("message-list")
-    //     console.log(container)
-    //     if (container.classList.contains("active-chat")) {
-    //         container.classList.remove("active-chat")
-    //     } else {
-    //         container.classList.add("active-chat");
-    //         content.classList.remove("d-none");
-    //         content.classList.add("d-block")
-    //     }
-    // },
+            deleteMessage : function() {
+                this.messages = this.messages.filter((element) => element != currentId)
+            },
 
-    // getLastMessage : function (element) {
-    //     let obatinedMessage = this.contacts[element].messages.length
-    //     let lastMessage = this.contacts[element].messages[2].message
-    //     console.log(lastMessage)
-    //     return lastMessage
-    // }, 
+            getLastMessage : function (element) {
+                let messageIndex = this.contacts[element].messages.length -1
+                console.log(`L'index dell'ultimo messaggio è: ${messageIndex}`) 
+                let lastMessage = this.contacts[element].messages[messageIndex].message
+                return lastMessage
+            },
+
+    }, 
+
+    }
+)
