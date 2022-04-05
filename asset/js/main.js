@@ -181,7 +181,6 @@ var app = new Vue(
         },
 
         methods: {
-
             changeIndexContacts: function (index) {
                 this.indexChanged = index;
             },
@@ -212,6 +211,26 @@ var app = new Vue(
                     this.contacts[this.indexChanged].messages.push(botReply) 
                  }, 2000);
                  console.log(botReply)
+            },
+
+            search: function() {
+                let input = document.getElementById('searchbar').value
+                input=input.toLowerCase();
+                let x = document.getElementsByClassName('contact-name');
+                let y = document.getElementsByClassName("contact-img");
+                let z = document.getElementsByClassName("list-group-item")
+                
+                
+                for (i = 0; i < x.length; i++) { 
+                    if (!x[i].innerHTML.toLowerCase().includes(input)) {
+                        x[i].style.display="none";
+                        y[i].style.display="none";
+                        z[i].style.border = 0;
+                    }
+                    else {
+                        x[i].style.display="b-block";                 
+                    }
+                }
             }
         }
     }

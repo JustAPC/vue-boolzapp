@@ -17,6 +17,10 @@ body {
     z-index: -1;
 }
 
+.container-height {
+    min-height: 90vh;
+}
+
 .top-bar {
     background-color: #E9EAED;
 }
@@ -47,7 +51,7 @@ body {
     border: 0;
 }
 
-#searchbar-text::placeholder {
+#searchbar::placeholder {
     font-size: 0.8em;
 }
 

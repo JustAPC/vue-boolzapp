@@ -15,9 +15,9 @@
     </div>
     <div id="root">
         <div class="py-1">
-            <div class="container bg-white mt-4">
+            <div class="container container-height bg-white mt-4">
                 <div class="row">
-                    <div class="col-4 m-0 p-0"> <!-- Colonna sinistra -->
+                    <div class="col-4 m-0 p-0 container-height"> <!-- Colonna sinistra -->
                         
                         <!-- Sezione profilo utente -->
                         <div class="d-flex justify-content-between align-items-center p-3 border-end top-bar">
@@ -52,8 +52,8 @@
                                 <span class="search-button input-group-text" id="inputGroup-sizing-sm" style="padding: 0 25px;">
                                     <i class="fa-solid fa-magnifying-glass"></i>
                                 </span>
-                                <input type="text" id="searchbar-text" class="form-control border-0" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" 
-                                placeholder="Cerca o inizia una nuova chat">
+                                <input type="text" id="searchbar" class="form-control border-0" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" 
+                                placeholder="Cerca o inizia una nuova chat" v-on:keyup="search()">
                             </div>
                         </div>
 
@@ -67,10 +67,10 @@
                                 <!-- Immagine profilo -->
                                     <div class="d-flex align-items-center">
                                         <img :src=" `./asset/img/avatar${contact.avatar}.jpg` " alt="immagine utente"
-                                        class="rounded-circle profile-img me-3">
+                                        class="rounded-circle profile-img me-3 contact-img">
                                         <!-- Nome + ultimo messaggio -->
                                         <div class="pt-2">
-                                            <span>{{contact.name}}</span>
+                                            <span class="contact-name">{{contact.name}}</span>
                                             <!-- <p class="last-sent-message">{{getLastMessage(index)}}</p> -->
                                         </div>
                                     </div>
@@ -83,7 +83,7 @@
                         </div>
                     </div>
                     
-                    <div class="container col-8 m-0 p-0 d-flex flex-column flex-wrap justify-content-between"> <!-- Colonna Destra -->
+                    <div class="container container-height col-8 m-0 p-0 d-flex flex-column flex-wrap justify-content-between"> <!-- Colonna Destra -->
                         <!-- Barra superiore -->
                         <div class="d-flex justify-content-between align-items-center p-3 top-bar w-100"> <!-- Img + info -->
                             <div class="d-flex">
