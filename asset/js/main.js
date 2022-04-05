@@ -227,9 +227,6 @@ var app = new Vue(
                         y[i].style.display="none";
                         z[i].style.border = 0;
                     }
-                    else {
-                        x[i].style.display="b-block";                 
-                    }
                 }
             }
         }
