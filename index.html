@@ -60,8 +60,10 @@
                         <!-- Chat container -->
                         <div>
                             <ul class="list-group list-group-flush">
-                                <li class="d-flex justify-content-between align-items-center list-group-item"
-                                v-for="contact in contacts" @click="activeChat()">
+                                <li class="chat-container d-flex justify-content-between align-items-center list-group-item"
+                                v-for="(contact, index) in contacts"
+                                @click="changeIndexContacts(index)"
+                                role="buttons"> 
                                 <!-- Immagine profilo -->
                                     <div class="d-flex align-items-center">
                                         <img :src=" `./asset/img/avatar${contact.avatar}.jpg` " alt="immagine utente"
@@ -69,12 +71,12 @@
                                         <!-- Nome + ultimo messaggio -->
                                         <div class="pt-2">
                                             <span>{{contact.name}}</span>
-                                            <p class="last-sent-message">Ultimo messaggio inviato</p>
+                                            <!-- <p class="last-sent-message">{{getLastMessage(index)}}</p> -->
                                         </div>
                                     </div>
                                     <!-- Orario -->
                                     <div>
-                                        <span>{{contact.messages.date}}</span>
+                                        <span></span>
                                     </div>
                                 </li>
                             </ul>
@@ -102,19 +104,12 @@
                         <!-- Chat -->
                         <div class="chat-bg p-3 flex-grow-1">
                             <div class="container px-5 mx-auto">
-                                <ul class="list-group list-group-flush d-flex flex-coloumn">
-                                    <li class="list-group-item rounded-3 sent-message mb-3 align-self-end pe-5">
-                                        <span>{{contacts[0].messages[0].message}}</span> 
-                                        <div class="data-text">15:30</div> 
-
-                                    </li>
-                                    <li class="list-group-item rounded-3 sent-message mb-3 align-self-end pe-5">
-                                        <span>{{contacts[0].messages[1].message}}</span>
-                                        <div class="data-text">15:50</div> 
-                                    </li>
-                                    <li class="list-group-item rounded-3 received-message mb-3 align-self-start pe-5">
-                                        <span>{{contacts[0].messages[2].message}}</span> 
-                                        <div class="data-text">16:15</div> 
+                                <ul class="message-list list-group list-group-flush d-flex flex-coloumn">
+                                    <li class="list-group-item rounded-3 mb-3 pe-5"
+                                    v-for="(element, index) in contacts[indexChanged].messages"
+                                    :class="(element.status == 'sent') ? 'align-self-end sent-message' : 'align-self-start received-message' ">
+                                        <span>{{element.message}}</span> 
+                                        <div class="data-text">{{element.date}}</div>
                                     </li>
                                 </ul>
                             </div>
@@ -124,7 +119,7 @@
                         <div class="align-self-end w-100 input-bar">
                             <div class="d-flex align-items-center py-2 px-4 top-bar">
                                 <i class="fa-solid fa-face-smile fs-4 me-4"></i>
-                                <input type="text" id="chat-textbar" placeholder="Scrivi un messaggio">
+                                <input type="text" id="chat-textbar" placeholder="Scrivi un messaggio" @keyup.enter="newMessage()" v-model="inputText">
                                 <i class="fa-solid fa-microphone fs-4 ms-4"></i>
                             </div>
                         </div>
@@ -135,9 +130,24 @@
         </div>
     </div>
 
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="./asset/js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 </body>
 </html>
+
+
+<!-- 
+    - Funzione chatSelection non funziona, nello specifico se uso l'id si, se uso altri selector no
+    - Trovare il modo di prendere l'ultimo messaggio senza inserire manualmente gli indici
+    - Istanziare variabili globali o cicli globali in vue( esempi:
+        - Voglio che per ogni oggetto che come key abbia 'sent' gli sia assegnata una determinata classe
+        decido di farlo con ciclo for che voglio dichiarare al di fuori di funzioni
+
+        - Voglio dichiarare come variabile globale la lunghezza dell'array messages all'interno di contacts in modo da poter
+        usare proprio questa variabile come prarametro per dichiarare qual'è l'ultimo messaggio 
+        {{contacts.messages[VARIABILE GLOBALE].message}}
+    )
+ -->

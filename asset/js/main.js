@@ -1,5 +1,6 @@
 var app = new Vue(
     {
+
         el: '#root',
         data: {
             profilo: {
@@ -169,11 +170,68 @@ var app = new Vue(
                         }
                     ],
                 }
-            ]
+            ],
+            
+            indexChanged : 0,
+            inputText : '',
+            
+        },
+        created() {
+               
         },
 
         methods: {
-            
+
+            changeIndexContacts: function (index) {
+                this.indexChanged = index;
+            },
+
+            newMessage: function() {
+                let minutes = dayjs().get('minutes');
+                let hours = dayjs().get('hours');
+                let newMessage = {
+                    date: `${hours}:${minutes}`,
+                    message: this.inputText,
+                    status: 'sent'
+                }
+
+                this.contacts[this.indexChanged].messages.push(newMessage)
+                this.inputText = ''
+                this.reply()               
+            },
+
+            reply: function() {
+                let minutes = dayjs().get('minutes');
+                let hours = dayjs().get('hours');
+                let botReply = {
+                    date: `${hours}:${minutes}`,
+                    message: 'Ok',
+                    status: 'received'
+                }
+                setTimeout(() => {
+                    this.contacts[this.indexChanged].messages.push(botReply) 
+                 }, 2000);
+                 console.log(botReply)
+            }
         }
     }
-)
+    )
+    // chatSelection : function () {
+    //     let container = document.getElementsByClassName("chat-container")
+    //     let content = document.querySelectorAll("message-list")
+    //     console.log(container)
+    //     if (container.classList.contains("active-chat")) {
+    //         container.classList.remove("active-chat")
+    //     } else {
+    //         container.classList.add("active-chat");
+    //         content.classList.remove("d-none");
+    //         content.classList.add("d-block")
+    //     }
+    // },
+
+    // getLastMessage : function (element) {
+    //     let obatinedMessage = this.contacts[element].messages.length
+    //     let lastMessage = this.contacts[element].messages[2].message
+    //     console.log(lastMessage)
+    //     return lastMessage
+    // }, 
