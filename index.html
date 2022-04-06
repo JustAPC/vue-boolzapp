@@ -10,9 +10,7 @@
     <title>Boolzap</title>
 </head>
 <body>
-    <div class="sfondo">
-
-    </div>
+   
     <div id="root">
         <div class="py-1">
             <div class="container container-height bg-white mt-4">
@@ -58,7 +56,7 @@
                         </div>
 
                         <!-- Chat container -->
-                        <div>
+                        <div class="overflow-hidden chat-list">
                             <ul class="list-group list-group-flush">
                                 <li class="chat-container d-flex justify-content-between align-items-center list-group-item"
                                 v-for="(contact, index) in contacts"
@@ -104,7 +102,7 @@
                         </div>
 
                         <!-- Chat -->
-                        <div class="chat-bg p-3 flex-grow-1">
+                        <div class="chat-section overflow-auto p-3 flex-grow-1">
                             <div class="container px-5 mx-auto">
                                 <ul class="message-list list-group list-group-flush d-flex flex-coloumn">
                                     <li class="list-group-item rounded-3 mb-3 pe-5"
@@ -152,14 +150,6 @@
 
 
 <!-- 
-    - Funzione chatSelection non funziona, nello specifico se uso l'id si, se uso altri selector no
-    - Trovare il modo di prendere l'ultimo messaggio senza inserire manualmente gli indici
-    - Istanziare variabili globali o cicli globali in vue( esempi:
-        - Voglio che per ogni oggetto che come key abbia 'sent' gli sia assegnata una determinata classe
-        decido di farlo con ciclo for che voglio dichiarare al di fuori di funzioni
-
-        - Voglio dichiarare come variabile globale la lunghezza dell'array messages all'interno di contacts in modo da poter
-        usare proprio questa variabile come prarametro per dichiarare qual'è l'ultimo messaggio 
-        {{contacts.messages[VARIABILE GLOBALE].message}}
-    )
+    Selezione dinamica immagine e nome nella sezione alta
+    Aggiungere al mouseover la class overflow auto e rimuovere overflow hidden
  -->

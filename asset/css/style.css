@@ -5,16 +5,12 @@
 }
 
 body {
-    background-color: #D8DBD7;
-}
-
-.sfondo {
-    background-color: #359589;
-    height: 150px;
-    position: absolute;
-    left: 0;
-    right: 0;
-    z-index: -1;
+    height: 100vh;
+    background: linear-gradient(180deg,
+            rgba(0, 150, 136, 1) 0%,
+            rgba(51, 166, 153, 1) 15%,
+            rgba(221, 219, 209, 1) 15%,
+            rgba(221, 219, 209, 1) 100%);
 }
 
 .container-height {
@@ -73,10 +69,11 @@ body {
     font-size: 0.8em;
 }
 
-.chat-bg {
+.chat-section {
     background-image: url(../img/mine.jpg);
     background-position: center;
     background-repeat: repeat;
+   max-height: 76vh;
 }
 
 .text-padding {
@@ -123,4 +120,8 @@ body {
     position: absolute;
     top: 0;
     right: 0;
+}
+
+.chat-list {
+    max-height: 70vh;
 }
