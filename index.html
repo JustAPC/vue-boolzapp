@@ -73,14 +73,12 @@
                                         <!-- Nome + ultimo messaggio -->
                                         <div class="pt-2">
                                             <span class="contact-name">{{contact.name}}</span>
-                                            <div>
-                                                <span class="last-sent-message">{{getLastMessage(index)}}</span>
-                                            </div>
+                                            <p class="last-sent-message">{{getLastMessage(index)}}</p>
                                         </div>
                                     </div>
                                     <!-- Orario -->
                                     <div>
-                                        <span></span>
+                                        <span class="last-sent-message">{{lastMessageTime(contact.messages[contact.messages.length-1].date)}}</span>
                                     </div>
                                 </li>
                             </ul>
@@ -112,8 +110,18 @@
                                     <li class="list-group-item rounded-3 mb-3 pe-5"
                                     v-for="(element, index) in contacts[indexChanged].messages"
                                     :class="(element.status == 'sent') ? 'align-self-end sent-message' : 'align-self-start received-message' ">
-                                        <span>{{element.message}}</span> 
-                                        <div class="data-text">{{element.date}}</div>
+                                        <span>{{element.message}}</span>
+                                        <div v-if="(element.status == 'sent')" id="dropdown-menu" class="h-100">
+                                            <div class="dropdown">
+                                                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></button>
+                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                                  <li><a class="dropdown-item" href="#">Message info</a></li>
+                                                  <li><a class="dropdown-item" href="#" @click="messageDelete(index)">Delete message</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="data-text">{{dataFiltering(index)}}</div>
+                                        
                                     </li>
                                 </ul>
                             </div>

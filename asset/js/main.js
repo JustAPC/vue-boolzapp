@@ -177,11 +177,19 @@ var app = new Vue(
             searchbar: ''
             
         },
-        created() {
-               
-        },
 
         methods: {
+            dataFiltering: function(index){
+                let date = this.contacts[this.indexChanged].messages[index].date
+                let newDate = ''
+                if (date.length > 10) {
+                    newDate = date.slice(10, 16)
+                } else {
+                    newDate = date.slice(0, 5)
+                }
+                return newDate
+            },
+        
             changeIndexContacts: function (index) {
                 this.indexChanged = index;
             },
@@ -214,16 +222,25 @@ var app = new Vue(
                  console.log(botReply)
             },
 
-            deleteMessage : function() {
-                this.messages = this.messages.filter((element) => element != currentId)
-            },
-
             getLastMessage : function (element) {
-                let messageIndex = this.contacts[element].messages.length -1
-                console.log(`L'index dell'ultimo messaggio è: ${messageIndex}`) 
+                let messageIndex = this.contacts[element].messages.length -1 
                 let lastMessage = this.contacts[element].messages[messageIndex].message
                 return lastMessage
             },
+
+            lastMessageTime : function (time) {
+                if (time.length > 10) {
+                    newTime = time.slice(10, 16);
+                }
+                else {
+                    newTime = time.slice(0, 5)
+                }
+                return newTime;
+            },
+
+            messageDelete: function (i) {
+                this.contacts[this.indexChanged].messages.splice(i, 1)
+            }
 
     }, 
 
