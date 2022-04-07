@@ -385,7 +385,19 @@ var app = new Vue(
 
             getRandomInt: function (max) {
                 return Math.floor(Math.random() * max);
-            }
+            },
+
+            overflowShow: function() {
+                let container = document.getElementById("overflow")
+                container.classList.remove("overflow-hidden")
+                container.classList.add ("overflow-auto")
+            },
+
+            overflowHide: function (){
+                let container = document.getElementById("overflow")
+                container.classList.remove ("overflow-auto")
+                container.classList.add ("overflow-hidden")
+            },
         }
     }, 
 )

@@ -56,7 +56,8 @@
                         </div>
 
                         <!-- Chat container -->
-                        <div class="overflow-hidden chat-list">
+                        <div class="overflow-hidden chat-list" id="overflow"
+                        @mouseover="overflowShow()" @mouseleave="overflowHide()">
                             <ul class="list-group list-group-flush">
                                 <li class="chat-container d-flex justify-content-between align-items-center list-group-item"
                                 v-for="(contact, index) in contacts"
@@ -87,9 +88,9 @@
                         <!-- Barra superiore -->
                         <div class="d-flex justify-content-between align-items-center p-3 top-bar w-100"> <!-- Img + info -->
                             <div class="d-flex">
-                                <img src="./asset/img/avatar_1.jpg" alt="" class="rounded-circle me-3 profile-img">
+                                <img :src=" `./asset/img/avatar${contacts[indexChanged].avatar}.jpg` " alt="immagine utente" class="rounded-circle profile-img me-3 contact-img">
                                 <div class="">
-                                    <p class="m-0 p-0">{{contacts[0].name}}</p>
+                                    <p class="m-0 p-0">{{contacts[indexChanged].name}}</p>
                                     <p class="m-0 p-0 last-connection">Ultimo accesso oggi alle 17:00</p>
                                 </div>
                             </div>
@@ -102,8 +103,8 @@
                         </div>
 
                         <!-- Chat -->
-                        <div class="chat-section overflow-auto p-3 flex-grow-1">
-                            <div class="container px-5 mx-auto">
+                        <div class="chat-bg pt-3 flex-grow-1">
+                            <div class="container px-5 mx-auto overflow-auto chat-list h-100">
                                 <ul class="message-list list-group list-group-flush d-flex flex-coloumn">
                                     <li class="list-group-item rounded-3 mb-3 pe-5"
                                     v-for="(element, index) in contacts[indexChanged].messages"
@@ -111,7 +112,7 @@
                                         <span>{{element.message}}</span>
                                         <div v-if="(element.status == 'sent')" id="dropdown-menu" class="h-100">
                                             <div class="dropdown">
-                                                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></button>
+                                                <button class="delete-button btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></button>
                                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                                   <li><a class="dropdown-item" href="#">Message info</a></li>
                                                   <li><a class="dropdown-item" href="#" @click="messageDelete(index)">Delete message</a></li>
@@ -129,7 +130,8 @@
                         <div class="align-self-end w-100 input-bar">
                             <div class="d-flex align-items-center py-2 px-4 top-bar">
                                 <i class="fa-solid fa-face-smile fs-4 me-4"></i>
-                                <input type="text" id="chat-textbar" placeholder="Scrivi un messaggio" @keyup.enter="newMessage()" v-model="inputText">
+                                <input type="text" id="chat-textbar" placeholder="Scrivi un messaggio" 
+                                @keyup.enter="newMessage()" v-model="inputText">
                                 <i class="fa-solid fa-microphone fs-4 ms-4"></i>
                             </div>
                         </div>

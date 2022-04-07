@@ -5,12 +5,14 @@
 }
 
 body {
-    height: 100vh;
+    min-height: 100vh;
     background: linear-gradient(180deg,
             rgba(0, 150, 136, 1) 0%,
             rgba(51, 166, 153, 1) 15%,
             rgba(221, 219, 209, 1) 15%,
             rgba(221, 219, 209, 1) 100%);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .container-height {
@@ -69,11 +71,12 @@ body {
     font-size: 0.8em;
 }
 
-.chat-section {
+.chat-bg {
     background-image: url(../img/mine.jpg);
     background-position: center;
     background-repeat: repeat;
-   max-height: 76vh;
+    margin: 0;
+    padding: 0;
 }
 
 .text-padding {
@@ -118,10 +121,15 @@ body {
 
 #dropdown-menu {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: -3px;
+    right: 8px;
 }
 
 .chat-list {
-    max-height: 70vh;
+    max-height: 73vh;
+}
+
+.delete-button {
+    margin: 0;
+    padding: 0;
 }
